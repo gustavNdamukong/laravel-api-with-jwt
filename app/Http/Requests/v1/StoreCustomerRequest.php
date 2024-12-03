@@ -12,7 +12,9 @@ class StoreCustomerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        $user = $this->user();
+        // make sure user exists (!= null), else calling tokenCan() on it will error
+		return $user != null && $user->tokenCan('create');
     }
 
     /**

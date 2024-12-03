@@ -26,7 +26,7 @@ Route::group([
 // api/v1
 // eg: http://localhost:8888/laravel-api-with-jwt/public/v1/customers
 
-Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\api\v1'], function() {
+Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\api\v1', 'middleware' => ['auth:sanctum']], function() {
     Route::apiResource('customers', CustomerController::class);
     Route::apiResource('invoices', InvoiceController::class);
 
