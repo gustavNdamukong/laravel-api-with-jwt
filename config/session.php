@@ -21,8 +21,6 @@ return [
     'driver' => env('SESSION_DRIVER', 'database'),
 
 
-    'session' => env('SESSION_DRIVER', 'file'), /////
-
     /*
     |--------------------------------------------------------------------------
     | Session Lifetime

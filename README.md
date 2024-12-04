@@ -1,12 +1,27 @@
 # Features
 
 * This API application has the following features & endpoints
+    * POST request to signup a new user
+
+    * POST request to login a new user
+
     * GET request to fetch all customers 
+
         (optionally with their associated invoices)
+
     * GET request to fetch a single customer by id
+
     * GET all invoinces
+
+    * POST request to create a new customer
+
+    * PUT request to replace an existing customer
+
+    * PATCH request to modify some field of an existing customer
+
     * GET params provided for filtering the results
-    * Sanctum middleware protection of routes for token-based requests
+
+    * Sanctum middleware protection of routes for token-based request authentication
 
 
 # How to run the application
@@ -56,29 +71,43 @@ The application will then be available on:
 
 # POST Requests
 
-* Add a new customer
+* Users 
+    * Sign up a new user
 
-    * endpoint:
-        * http://127.0.0.1:8000/api/v1/customers/
+        * endpoint:
+            * http://127.0.0.1:8000/api/v1/signup/
 
-    * Body payload:
+        * Body payload:
 
-        * {
-            "name": "Jim Carey",
-            "type": "I",
-            "email": "jimmyfn@carey.com",
-            "address": "235 Langley Street",
-            "city": "Queens",
-            "state": "New York",
-            "postalCode": "234654"
-         }
+            * {
+                "name": "John Doe",
+    			"email": "johndoe@example.com",
+    			"password": "password",
+    			"password_confirmation": "password"
+             }
 
-    * If you would rather use the CLI
 
-        curl -X POST  http://127.0.0.1:8000/api/v1/customers \
-		-H "Content-Type: application/json" \
-		-H "Accept: application/json" \
-		-d '{
+    * Login a user
+
+        * endpoint:
+            * http://127.0.0.1:8000/api/v1/login/
+
+        * Body payload:
+
+            * {
+                "email": "johndoe@example.com",
+        		"password": "password"
+             }
+             
+
+    * Add a new customer
+
+        * endpoint:
+            * http://127.0.0.1:8000/api/v1/customers/
+
+        * Body payload:
+
+            * {
                 "name": "Jim Carey",
                 "type": "I",
                 "email": "jimmyfn@carey.com",
@@ -86,7 +115,22 @@ The application will then be available on:
                 "city": "Queens",
                 "state": "New York",
                 "postalCode": "234654"
-        	}'
+            }
+
+        * If you would rather use the CLI
+
+            curl -X POST  http://127.0.0.1:8000/api/v1/customers \
+            -H "Content-Type: application/json" \
+            -H "Accept: application/json" \
+            -d '{
+                    "name": "Jim Carey",
+                    "type": "I",
+                    "email": "jimmyfn@carey.com",
+                    "address": "235 Langley Street",
+                    "city": "Queens",
+                    "state": "New York",
+                    "postalCode": "234654"
+                }'
 
 # PUT Requests
 
