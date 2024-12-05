@@ -33,7 +33,11 @@
     * SwaggerUI (Open API) documentation
 
 
-# How to run the application
+# How to start the application
+
+Run the migrations and seeds in one go
+
+    php artisan migrate --seed
 
 If you have no other local deployment solution vailable, just run
 
@@ -264,5 +268,8 @@ The application will then be available on:
 This project implements the darkaonline/l5-swagger Laravel package for Swagger 
 UI documentation. To start you off documenting your API, i have added SwaggerUI 
 annotations for 3 routes.
+
+I have also included the complete Postman collection for this project. It's in 
+the json file in the root directory named: "customers-and-orders-api.postman_collection.json"
 
 ![Swagger UI docs](https://github.com/gustavNdamukong/laravel-api-with-jwt/blob/main/public/images/swaggerUI-img.png?raw=true)
