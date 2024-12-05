@@ -13,17 +13,6 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         // Add your custom VerifyCsrfToken middleware
-        /////$middleware->append(\Illuminate\Session\Middleware\StartSession::class);
-        /////$middleware->append(App\Middleware\VerifyCsrfToken::class);
-        /*$middleware->validateCsrfTokens(
-            except: [
-                'api/*',
-                'http://localhost:8888/laravel-api-with-jwt/public/api/v1/customers',
-                'http://localhost:8888/laravel-api-with-jwt/public/api/v1/invoices',
-            ]
-        );
-        */
-
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

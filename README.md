@@ -1,9 +1,16 @@
 # Features
 
+## Laravel version: 11
 * This API application has the following features & endpoints
+
+
     * POST request to signup a new user
 
     * POST request to login a new user
+
+    * POST request to logout a user (secured route)
+
+    * POST request to refresh the user's access token
 
     * GET request to fetch all customers 
 
@@ -13,15 +20,17 @@
 
     * GET all invoinces
 
-    * POST request to create a new customer
+    * POST request to create a new customer (secured route)
 
-    * PUT request to replace an existing customer
+    * PUT request to replace an existing customer (secured route)
 
-    * PATCH request to modify some field of an existing customer
+    * PATCH request to modify some fields of an existing customer (secured route)
 
     * GET params provided for filtering the results
 
     * Sanctum middleware protection of routes for token-based request authentication
+
+    * SwaggerUI (Open API) documentation
 
 
 # How to run the application
@@ -98,12 +107,34 @@ The application will then be available on:
                 "email": "johndoe@example.com",
         		"password": "password"
              }
-             
 
-    * Add a new customer
+
+    * Logout a user (secured route)
+
+        * endpoint:
+            * http://127.0.0.1:8000/api/v1/logout/
+
+        * Authorization Bearer Token: 10|EBFRNw1F5qtko0tKMDQVcBXlBfc5d8bmMC...
+
+
+    * Refresh user's access token eg so you can keep them logged in. 
+
+        * endpoint:
+            * http://127.0.0.1:8000/api/v1/refresh_token/
+
+        * Body payload:
+
+            * {
+                "refresh_token": "bZfyZLv1LmIBySXyCp5t2lPeN8y7slqDqETI8B...
+             }
+
+
+    * Add a new customer (secured route)
 
         * endpoint:
             * http://127.0.0.1:8000/api/v1/customers/
+
+        * Authorization Bearer Token: 10|EBFRNw1F5qtko0tKMDQVcBXlBfc5d8bmMC...
 
         * Body payload:
 
@@ -135,8 +166,11 @@ The application will then be available on:
 # PUT Requests
 
 * Update (replace) an existing customer (Need to provide data for all fields)
+    (secured route)
     * endpoint:
         * http://127.0.0.1:8000/api/v1/customers/327
+
+    * Authorization Bearer Token: 10|EBFRNw1F5qtko0tKMDQVcBXlBfc5d8bmMC...
 
     * Payload
         * {
@@ -154,8 +188,11 @@ The application will then be available on:
 # PATCH Requests
 
 * Update an existing customer (no need to provide data for all fields)
+    (secured route)
     * endpoint:
         * http://127.0.0.1:8000/api/v1/customers/327
+
+    * Authorization Bearer Token: 10|EBFRNw1F5qtko0tKMDQVcBXlBfc5d8bmMC...
 
     * Payload
         * {
@@ -169,8 +206,11 @@ The application will then be available on:
 # POST Bulk Insert Request
 
 * Allow clients to submit bulk inserts of multiple invoices
+    (secured route)
     * endpoint:
         * http://127.0.0.1:8000/api/v1/invoices/bulk
+
+    * Authorization Bearer Token: 10|EBFRNw1F5qtko0tKMDQVcBXlBfc5d8bmMC...
 
     * Payload
         * [{
@@ -189,7 +229,7 @@ The application will then be available on:
 			}]
 
 
-# GET Filtering of requests
+# GET Request Filtering Options
 
 * Allow clients to use query string parameters to filter request results
     Note that you can combine multiple filters, separated by ampersand (&)
@@ -217,3 +257,12 @@ The application will then be available on:
     * View only customers who are resident in London, and who are Businesses
 
         * http://127.0.0.1:8000/api/v1/customers?state[eq]=London&type[eq]=B
+
+
+# SwaggerUI (Open API) documentation
+
+This project implements the darkaonline/l5-swagger Laravel package for Swagger 
+UI documentation. To start you off documenting your API, i have added SwaggerUI 
+annotations for 3 routes.
+
+![alt text](https://github.com/[gustavNdamukong]/[laravel-api-with-jwt]/blob/[main]/public/images/swaggerUI-img.png?raw=true)
