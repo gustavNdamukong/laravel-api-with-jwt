@@ -265,4 +265,4 @@ This project implements the darkaonline/l5-swagger Laravel package for Swagger
 UI documentation. To start you off documenting your API, i have added SwaggerUI 
 annotations for 3 routes.
 
-![alt text](https://github.com/[gustavNdamukong]/[laravel-api-with-jwt]/blob/[main]/public/images/swaggerUI-img.png?raw=true)
+![Swagger UI docs](https://github.com/gustavNdamukong/laravel-api-with-jwt/blob/main/public/images/swaggerUI-img.png?raw=true)
